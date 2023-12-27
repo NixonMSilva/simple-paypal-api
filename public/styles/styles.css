@@ -1,0 +1,113 @@
+body {
+  margin: 0;
+  font-family: 'Sarabun', sans-serif;
+}
+
+header {
+  padding: 20px;
+  text-align: center;
+  font-size: x-large;
+  font-weight: bold;
+}
+
+main {
+  padding: 20px 0;
+  text-align: center;
+}
+
+input {
+  height: 20px;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.background {
+  background-color: #f0f0f0;
+  padding: 10px;
+}
+
+.centered-content {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.section {
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  padding: 20px;
+  margin: 5px;
+}
+
+.section-left {
+  flex: 2;
+}
+
+.section-right {
+  flex: 1;
+}
+
+.rows {
+  display: flex;
+  flex-direction: column;
+}
+
+.row-single {
+  border-bottom: 1px solid #ccc;
+  padding: 10px 0;
+}
+
+.row-single:last-child {
+  border-bottom: none;
+}
+
+.label-value-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
+.label-value-row img {
+  margin-right: 10px;
+  max-height: 100px;
+}
+
+.no-spaces {
+  justify-content: flex-start;
+}
+
+.label-text {
+  font-weight: bolder;
+}
+
+.item-name {
+  align-items: center;
+  padding: 0;
+  font-weight: bolder;
+}
+
+.item-description {
+  text-align: justify;
+  font-size: small;
+}
+
+.total-price {
+  text-decoration: underline;
+  font-weight: bolder;
+}
+
+@media only screen and (max-width: 600px) {
+  .header-content {
+    flex-direction: column;
+  }
+
+  .section {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+}
+  
