@@ -7,6 +7,7 @@ export class CheckoutController implements Controller {
 
   async handle (request: HttpRequest): Promise<HttpResponse> {
     try {
+      await this.checkout.checkout(request.body)
       return ok('OK')
     } catch (error) {
       console.error({ error })
