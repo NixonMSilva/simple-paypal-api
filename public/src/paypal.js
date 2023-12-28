@@ -1,8 +1,9 @@
+/* eslint-disable dot-notation */
 const getFormValues = () => {
   const form = document.getElementById('buyer-form')
-  
+
   const amount = parseFloat(document.getElementById('total-value').innerHTML.replace(/[^0-9.-]/g, ''))
-  
+
   const firstName = form.elements['first_name'].value
   const lastName = form.elements['last_name'].value
   const addressLine1 = form.elements['address_line1'].value
@@ -13,18 +14,19 @@ const getFormValues = () => {
   const country = form.elements['country'].value
 
   return {
-    firstName, 
-    lastName, 
-    addressLine1, 
-    addressLine2, 
-    city, 
-    stateProvince, 
-    zipPostalCode, 
+    firstName,
+    lastName,
+    addressLine1,
+    addressLine2,
+    city,
+    stateProvince,
+    zipPostalCode,
     country,
     amount
   }
 }
 
+// eslint-disable-next-line no-undef
 paypal.Buttons({
   style: {
     color: 'gold',
@@ -33,11 +35,11 @@ paypal.Buttons({
     layout: 'vertical',
     height: 40
   },
-  createOrder: function(data, actions) {
+  createOrder: function (data, actions) {
     const formValues = getFormValues()
     console.log(formValues)
     return true
-    /*return fetch('https://your-api-endpoint/create-order', {
+    /* return fetch('https://your-api-endpoint/create-order', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -73,5 +75,5 @@ paypal.Buttons({
       console.error('Error generating order:', error);
       throw error; // Propagate the error for handling in the onError function
     }) */
-  },
+  }
 }).render('#paypal-button-container')
