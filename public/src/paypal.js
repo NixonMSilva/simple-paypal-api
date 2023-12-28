@@ -37,18 +37,12 @@ paypal.Buttons({
   },
   createOrder: function (data, actions) {
     const formValues = getFormValues()
-    console.log(formValues)
-    return true
-    /* return fetch('https://your-api-endpoint/create-order', {
+    return fetch('http://localhost:8080/checkout', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
-        // Add other headers if needed
       },
       body: JSON.stringify({
-        // Include client data needed for order generation
-        // Example: pass client data received from the form
-        // Replace this with your actual client data
         firstName: formValues.firstName,
         lastName: formValues.lastName,
         addressLine1: formValues.addressLine1,
@@ -57,23 +51,21 @@ paypal.Buttons({
         stateProvince: formValues.stateProvince,
         zipPostalCode: formValues.zipPostalCode,
         country: formValues.country,
-        amount: formValues.amount // Example amount
-        // Include other necessary data
+        amount: formValues.amount
       })
     })
-    .then(response => {
-      if (!response.ok) {
-        throw new Error('Failed to generate order');
-      }
-      return response.json();
-    })
-    .then(orderData => {
-      // Return the order ID obtained from the API response
-      return orderData.orderID; // Replace 'orderID' with your actual order ID property
-    })
-    .catch(error => {
-      console.error('Error generating order:', error);
-      throw error; // Propagate the error for handling in the onError function
-    }) */
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Failed to generate order')
+        }
+        return response.json()
+      })
+      .then(orderData => {
+        return orderData.orderID
+      })
+      .catch(error => {
+        console.error('Error generating order:', error)
+        throw error
+      })
   }
 }).render('#paypal-button-container')
