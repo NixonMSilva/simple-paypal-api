@@ -8,4 +8,5 @@ export type CheckoutModel = {
   zipPostalCode: string
   country: string
   amount: number
+  token: string
 }

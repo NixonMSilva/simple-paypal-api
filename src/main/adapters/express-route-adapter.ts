@@ -10,7 +10,7 @@ export const adaptRoute: Adapter = controller => async (req, res) => {
     body: req.body,
     params: req.params
   }
-  
+
   try {
     request.headers = req.headers
     const httpResponse = await controller.handle(request)
