@@ -53,19 +53,28 @@ paypal.Buttons({
         country: formValues.country,
         amount: formValues.amount
       })
+    }).then(function (res) {
+      return res.json()
+    }).then(function (orderData) {
+      return orderData.data.id
     })
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('Failed to generate order')
-        }
-        return response.json()
+  },
+  onApprove: function (data, actions) {
+    console.log(data)
+    return fetch('http://localhost:8080/capture', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        orderId: data.orderID
       })
-      .then(orderData => {
-        return orderData.orderID
-      })
-      .catch(error => {
-        console.error('Error generating order:', error)
-        throw error
-      })
+    }).then(function (res) {
+      return res.json()
+    }).then(function (details) {
+      console.log('Details', details)
+      const transactionId = details.data.transactionId
+      window.location.href = `/confirmed?id=${transactionId}`
+    })
   }
 }).render('#paypal-button-container')

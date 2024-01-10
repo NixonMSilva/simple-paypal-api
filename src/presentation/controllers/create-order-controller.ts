@@ -1,4 +1,4 @@
-import { ok, redirect, serverError, unauthorized } from '@/presentation/helpers'
+import { ok, serverError, unauthorized } from '@/presentation/helpers'
 import { Controller, HttpRequest, HttpResponse } from '@/presentation/protocols'
 import { Authenticate, CreateOrder } from '@/domain/usecases'
 
@@ -16,19 +16,14 @@ export class CreateOrderController implements Controller {
       if (!token) {
         return unauthorized()
       }
+      console.log(token)
 
       // Order creation
       const orderData = await this.createOrder.createOrder({ ...request.body, token })
       console.log(orderData)
 
       // Paypal redirection
-      for (const link of orderData.links) {
-        if (link.rel === 'payer-action') {
-          return redirect(link.href)
-        }
-      }
-
-      return ok('Ok')
+      return ok(orderData)
     } catch (error) {
       console.error({ error })
       return serverError()

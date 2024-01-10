@@ -11,16 +11,15 @@ export class CaptureOrderController implements Controller {
   async handle (request: HttpRequest): Promise<HttpResponse> {
     try {
       const data = {
-        orderId: request.query.token,
-        auth: 'test'
+        orderId: request.body.orderId
       }
 
       if (!data.orderId) {
         return badRequest(new MissingParamError('token'))
       }
 
-      const output = await this.captureOrder.captureOrder(data)
-      return ok(output)
+      const captureOutput = await this.captureOrder.captureOrder(data)
+      return ok(captureOutput)
     } catch (error) {
       console.error({ error })
       return serverError()

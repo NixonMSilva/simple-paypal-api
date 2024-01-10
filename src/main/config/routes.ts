@@ -19,7 +19,7 @@ export default (app: Express): void => {
   })
 
   router.post('/checkout', bodyParser, contentType, cors, securityHeaders, adaptRoute(makeCreateOrderController()))
-  router.get('/capture', bodyParser, contentType, cors, securityHeaders, adaptRoute(makeCaptureOrderController()))
+  router.post('/capture', bodyParser, contentType, cors, securityHeaders, adaptRoute(makeCaptureOrderController()))
 
   app.use(router)
 }

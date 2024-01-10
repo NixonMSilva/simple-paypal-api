@@ -11,6 +11,18 @@
 </head>
 <body>
     <p>Thank you for your purchase!</p>
+    <div>
+    <p>Transaction id: </p>
+    <p id="idValue"></p>
+    </div>
     <script src="src/index.js"></script>
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const idValue = urlParams.get('id');
+    
+        // Display the parameter value in the HTML page
+        const idElement = document.getElementById('idValue');
+        idElement.innerText = `${idValue}`;
+      </script>
 </body>
 </html>

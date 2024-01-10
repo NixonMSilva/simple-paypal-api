@@ -78,11 +78,29 @@ export class ApiPaypal implements CaptureOrderRepository, CreateOrderRepository 
   }
 
   async captureOrder (data: CaptureOrderRepository.Input): Promise<CaptureOrderRepository.Output> {
-    const response = {
-      orderId: data.orderId,
-      status: 'COMPLETED'
+    const redis = await redisHelper()
+    const token = await redis.get(data.orderId)
+
+    const config: AxiosRequestConfig = {
+      method: 'post',
+      maxBodyLength: Infinity,
+      url: `${env.paypalUrl}/${data.orderId}/capture`,
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${String(token)}`
+      }
     }
-    console.log(response)
-    return response
+
+    const response = await axios.request(config)
+
+    console.log(response.data)
+
+    await redis.del(data.orderId)
+
+    return {
+      id: response.data.id,
+      status: response.data.status,
+      transactionId: response.data.purchase_units[0].payments.captures[0].id
+    }
   }
 }

@@ -1,14 +1,11 @@
-import { CaptureOrderModel } from '@/domain/models'
+import { CaptureOrderInputModel, CaptureOrderOutputModel } from '@/domain/models'
 
 export interface CaptureOrder {
   captureOrder: (data: CaptureOrder.Input) => Promise<CaptureOrder.Output>
 }
 
 export namespace CaptureOrder {
-  export type Input = CaptureOrderModel
+  export type Input = CaptureOrderInputModel
 
-  export type Output = {
-    orderId: string
-    status: string
-  }
+  export type Output = CaptureOrderOutputModel
 }
