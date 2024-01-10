@@ -11,15 +11,16 @@
 </head>
 <body>
     <header class="background centered-content">
-        <p>Example Purchase Page</p>
+        <p>Example Confirmation Page</p>
     </header>
-    <main class="background centered-content">
+    <main>
         <p class="thank-you">Thank you for your purchase!</p>
+        <p class="total-price">Transaction ID:</p>
+        <p id="idValue">Lorem Ipsum</p>
         <hr>
-        <div>
-            <p class="total-price">Transaction ID:</p>
-            <p id="idValue"></p>
-        </div>
+        <button onclick="goToStart()">
+            Go Back
+        </button>
     </main>
     <script src="src/index.js"></script>
     <script>
@@ -29,6 +30,11 @@
         // Display the parameter value in the HTML page
         const idElement = document.getElementById('idValue');
         idElement.innerText = `${idValue}`;
-      </script>
+    </script>
+    <script>
+        function goToStart() {
+            window.location.href = "./";
+        }
+    </script>
 </body>
 </html>
