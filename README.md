@@ -8,7 +8,6 @@ Before running this application, make sure you have the following installed:
 
 - [Node.js](https://nodejs.org/)
 - [npm](https://www.npmjs.com/) (Node Package Manager)
-- [D
 
 ## Installation
 
