@@ -68,9 +68,11 @@ export class ApiPaypal implements CaptureOrderRepository, CreateOrderRepository 
   }
 
   async captureOrder (data: CaptureOrderRepository.Input): Promise<CaptureOrderRepository.Output> {
-    return {
+    const response = {
       orderId: data.orderId,
       status: 'COMPLETED'
     }
+    console.log(response)
+    return response
   }
 }

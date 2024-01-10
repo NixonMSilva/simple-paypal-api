@@ -12,6 +12,7 @@ export class CreateOrderController implements Controller {
     try {
       const token = await this.authenticate.authenticate()
       const urls = await this.createOrder.createOrder({ ...request.body, token })
+      console.log(urls)
       return ok(urls)
     } catch (error) {
       console.error({ error })
