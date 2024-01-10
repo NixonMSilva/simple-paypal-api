@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Example Purchase</title>
+  <link rel="stylesheet" href="styles/styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sarabun:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet"> 
+  <script src="https://www.paypal.com/sdk/js?client-id=AcfWMINKEsA0Cb99sLW2CgBkS6R5eCuQrslxU3iVkyqVs52d-ihFGF1PCPInn6IVg5T_WOBZ1YVn-VNR"></script>
+</head>
+<body>
+  <header class="background centered-content">
+    <p>Example Purchase Page</p>
+  </header>
+  <main class="background centered-content">
+    <section class="section section-left">
+      <div class="rows">
+        <div class="row-single">
+          <div class="label-value-row no-spaces item-name">
+            <img src="https://via.placeholder.com/100" alt="placeholder image 100px">
+            <p>Item A</p>
+          </div>
+          <p class="item-description">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eveniet id saepe modi sed officiis repudiandae excepturi magnam omnis vitae, magni harum labore eaque earum perspiciatis illo beatae, quasi voluptate temporibus!</p>
+          <div class="label-value-row">
+            <p>Unit Price:</p>
+            <p>$ 25.98</p>
+          </div>
+          <div class="label-value-row">
+            <p>Qty:</p>
+            <p>1</p>
+          </div>
+          <div class="label-value-row">
+            <p>Total Price:</p>
+            <p class="total-price">$ 25.98</p>
+          </div>
+        </div>
+        <div class="row-single">
+          <div class="label-value-row no-spaces item-name">
+            <img src="https://via.placeholder.com/100" alt="placeholder image 100px">
+            <p>Item B</p>
+          </div>
+          <p class="item-description">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eveniet id saepe modi sed officiis repudiandae excepturi magnam omnis vitae, magni harum labore eaque earum perspiciatis illo beatae, quasi voluptate temporibus!</p>
+          <div class="label-value-row">
+            <p>Unit Price:</p>
+            <p>$ 3.98</p>
+          </div>
+          <div class="label-value-row">
+            <p>Qty:</p>
+            <p>8</p>
+          </div>
+          <div class="label-value-row">
+            <p>Total Price:</p>
+            <p class="total-price">$ 31.84</p>
+          </div>
+        </div>
+        <div class="row-single">
+          <div class="label-value-row no-spaces item-name">
+            <img src="https://via.placeholder.com/100" alt="placeholder image 100px">
+            <p>Item C</p>
+          </div>
+          <p class="item-description">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eveniet id saepe modi sed officiis repudiandae excepturi magnam omnis vitae, magni harum labore eaque earum perspiciatis illo beatae, quasi voluptate temporibus!</p>
+          <div class="label-value-row">
+            <p>Unit Price:</p>
+            <p>$ 7.98</p>
+          </div>
+          <div class="label-value-row">
+            <p>Qty:</p>
+            <p>2</p>
+          </div>
+          <div class="label-value-row">
+            <p>Total Price:</p>
+            <p class="total-price">$ 15.96</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="section section-right">
+      <div class="rows">
+        <h3>Buyer's Information</h3>
+        <form id="buyer-form">
+          <input type="text" name="first_name" value="John" placeholder="First Name" required><br><br>
+          <input type="text" name="last_name" value="Smith" placeholder="Last Name" required><br><br>
+          <input type="text" name="address_line1" value="366 E LAKESIDE ST" placeholder="Address Line 1" required><br><br>
+          <input type="text" name="address_line2" placeholder="Address Line 2"><br><br>
+          <input type="text" name="city" value="Madison" placeholder="City" required><br><br>
+          <input type="text" name="state_province" value="WI" placeholder="State or Province" required><br><br>
+          <input type="text" name="zip_postal_code" value="53715-2074" placeholder="ZIP or Postal Code" required><br><br>
+          <select id="country" name="country">
+            <option value="US">United States</option>
+            <option value="GB">United Kingdom</option>
+            <option value="AR">Argentina</option>
+            <option value="AU">Australia</option>
+            <option value="BR">Brazil</option>
+            <option value="CA">Canada</option>
+            <option value="DE">Germany</option>
+            <option value="FR">France</option>
+            <option value="IT">Italy</option>
+            <option value="MX">Mexico</option>
+            <option value="NL">Netherlands</option>
+            <option value="PL">Poland</option>
+            <option value="PT">Portugal</option>
+            <option value="ES">Spain</option>
+            <option value="SE">Sweden</option>
+            <option value="CH">Switzerland</option>
+            <option value="TR">Turkey</option>
+            <option value="VN">Vietnam</option>
+            <option value="ZA">South Africa</option>
+          </select>
+          <!--<input type="text" name="country" value="US" placeholder="Country" required><br><br>-->
+        </form>
+        <div class="row-single label-value-row">
+          <p class="label-text">Total</p>
+          <p class="value-text" id="total-value">$ 73.78</p>
+        </div>
+        <div id="paypal-button-container"></div>
+      </div>
+    </section>
+  </main>
+  <script src="src/paypal.js"></script>
+</body>
+</html>
