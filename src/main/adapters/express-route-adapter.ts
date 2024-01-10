@@ -17,6 +17,9 @@ export const adaptRoute: Adapter = controller => async (req, res) => {
 
     if (httpResponse.statusCode >= 200 && httpResponse.statusCode < 300) {
       res.status(httpResponse.statusCode).json({ data: httpResponse.body })
+    } else if (httpResponse.statusCode >= 300 && httpResponse.statusCode < 400) {
+      console.log('Redirect URL', httpResponse.redirectUrl)
+      res.redirect(httpResponse.statusCode, httpResponse.redirectUrl)
     } else {
       res.status(httpResponse.statusCode).json({
         error: httpResponse.body.message

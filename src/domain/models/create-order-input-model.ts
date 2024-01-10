@@ -1,4 +1,4 @@
-export type CreateOrderModel = {
+export type CreateOrderInputModel = {
   firstName: string
   lastName: string
   addressLine1: string

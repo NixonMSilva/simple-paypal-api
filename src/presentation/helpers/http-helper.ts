@@ -11,6 +11,11 @@ export const created = (body: any): HttpResponse => ({
   body
 })
 
+export const redirect = (url: string): HttpResponse => ({
+  statusCode: 302,
+  redirectUrl: url
+})
+
 export const badRequest = (error: Error): HttpResponse => ({
   statusCode: 400,
   body: error

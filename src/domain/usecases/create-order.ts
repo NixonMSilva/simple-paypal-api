@@ -1,9 +1,10 @@
-import { CreateOrderModel } from '@/domain/models'
+import { CreateOrderInputModel, CreateOrderOutputModel } from '@/domain/models'
 
 export interface CreateOrder {
-  createOrder: (data: CreateOrder.Input) => Promise<string[]>
+  createOrder: (data: CreateOrder.Input) => Promise<CreateOrder.Output>
 }
 
 export namespace CreateOrder {
-  export type Input = CreateOrderModel
+  export type Input = CreateOrderInputModel
+  export type Output = CreateOrderOutputModel
 }
