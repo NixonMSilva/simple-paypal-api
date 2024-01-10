@@ -10,11 +10,17 @@
     <title>Document</title>
 </head>
 <body>
-    <p>Thank you for your purchase!</p>
-    <div>
-    <p>Transaction id: </p>
-    <p id="idValue"></p>
-    </div>
+    <header class="background centered-content">
+        <p>Example Purchase Page</p>
+    </header>
+    <main class="background centered-content">
+        <p class="thank-you">Thank you for your purchase!</p>
+        <hr>
+        <div>
+            <p class="total-price">Transaction ID:</p>
+            <p id="idValue"></p>
+        </div>
+    </main>
     <script src="src/index.js"></script>
     <script>
         const urlParams = new URLSearchParams(window.location.search);

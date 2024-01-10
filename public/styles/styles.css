@@ -107,14 +107,7 @@ select {
   font-weight: bolder;
 }
 
-@media only screen and (max-width: 600px) {
-  .header-content {
-    flex-direction: column;
-  }
-
-  .section {
-    width: 100%;
-    margin-bottom: 20px;
-  }
+.thank-you {
+  font-size: bigger;
+  font-weight: bold;
 }
-  

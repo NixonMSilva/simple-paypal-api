@@ -1,10 +1,11 @@
+import env from '@/main/config/env'
 import Redis from 'ioredis'
 
 export const redisHelper = async (): Promise<any> => {
   const conn = new Redis({
-    host: 'redis',
-    port: 6379,
-    password: '123'
+    host: env.redisHost,
+    port: env.redisPort,
+    password: env.redisPassword
   })
 
   await new Promise<void>((resolve, reject) => {
