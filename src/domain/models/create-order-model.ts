@@ -1,4 +1,4 @@
-export type CheckoutModel = {
+export type CreateOrderModel = {
   firstName: string
   lastName: string
   addressLine1: string

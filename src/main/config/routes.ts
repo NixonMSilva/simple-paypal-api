@@ -1,6 +1,6 @@
 import express, { type Express, type Request, type Response, Router } from 'express'
 import { adaptRoute } from '../adapters'
-import { makeCheckoutController } from '../factories'
+import { makeCreateOrderController } from '../factories'
 import { bodyParser, contentType, cors, securityHeaders, staticHeaders } from '../middlewares'
 import path from 'path'
 
@@ -18,7 +18,8 @@ export default (app: Express): void => {
     res.sendFile(path.join(__dirname, '..', '..', '..', 'public', 'confirmed-purchase.html'))
   })
 
-  router.post('/checkout', bodyParser, contentType, cors, securityHeaders, adaptRoute(makeCheckoutController()))
+  router.post('/checkout', bodyParser, contentType, cors, securityHeaders, adaptRoute(makeCreateOrderController()))
+  router.post('/capture', bodyParser, contentType, cors, securityHeaders, adaptRoute(makeCreateOrderController()))
 
   app.use(router)
 }
