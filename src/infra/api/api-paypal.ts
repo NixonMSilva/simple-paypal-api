@@ -1,5 +1,4 @@
 import { CaptureOrderRepository, CreateOrderRepository } from '@/data/protocols'
-import { redisHelper } from '@/infra/helpers'
 import { CreateOrderMapper } from '@/infra/mappings'
 import env from '@/main/config/env'
 import axios, { type AxiosRequestConfig } from 'axios'
@@ -69,33 +68,23 @@ export class ApiPaypal implements CaptureOrderRepository, CreateOrderRepository 
 
     const orderResponse = CreateOrderMapper.toDomain(response.data)
 
-    const redis = await redisHelper()
-
-    // Save token on redis
-    await redis.set(orderResponse.id, data.token)
-
     return orderResponse
   }
 
   async captureOrder (data: CaptureOrderRepository.Input): Promise<CaptureOrderRepository.Output> {
-    const redis = await redisHelper()
-    const token = await redis.get(data.orderId)
-
     const config: AxiosRequestConfig = {
       method: 'post',
       maxBodyLength: Infinity,
       url: `${env.paypalUrl}/${data.orderId}/capture`,
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${String(token)}`
+        Authorization: `Bearer ${data.token}`
       }
     }
 
     const response = await axios.request(config)
 
     console.log(response.data)
-
-    await redis.del(data.orderId)
 
     return {
       id: response.data.id,

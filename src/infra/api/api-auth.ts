@@ -20,10 +20,12 @@ export class ApiAuth implements AuthenticateRepository {
       data: dataContent
     }
     try {
+      console.log(env.clientId)
+      console.log(env.clientSecret)
       const response = await axios.request(config)
       return response.data.access_token
     } catch (error) {
-      throw new Error('Failed to retrieve access token')
+      throw new Error(error)
     }
   }
 }

@@ -37,6 +37,7 @@ paypal.Buttons({
   },
   createOrder: function (data, actions) {
     const formValues = getFormValues()
+    // return fetch('https://simple-paypal-api-logecywfca-uc.a.run.app/checkout', {
     return fetch('http://localhost:8080/checkout', {
       method: 'POST',
       headers: {
@@ -61,6 +62,7 @@ paypal.Buttons({
   },
   onApprove: function (data, actions) {
     console.log(data)
+    // return fetch('https://simple-paypal-api-logecywfca-uc.a.run.app/capture', {
     return fetch('http://localhost:8080/capture', {
       method: 'POST',
       headers: {
