@@ -1,0 +1,25 @@
+steps:
+  # Step 0
+  - name: 'gcr.io/cloud-builders/docker'
+    entrypoint: 'bash'
+    args:
+      - '-c'
+      - |
+        docker-compose -f docker-compose.yaml build
+
+  # Step 1
+  - name: 'gcr.io/cloud-builders/docker'
+    entrypoint: 'bash'
+    args:
+      - '-c'
+      - docker-compose -f docker-compose.yaml push
+
+  # Step 2
+  - name: 'gcr.io/cloud-builders/gcloud'
+    args:
+      - 'run'
+      - 'deploy'
+      - 'simple-paypal-api'
+      - '--image=gcr.io/voltaic-mode-410817/simple-paypal-api:latest'
+      - '--platform=managed'
+      - '--region=us-central1'

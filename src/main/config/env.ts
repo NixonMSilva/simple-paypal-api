@@ -5,8 +5,11 @@ dotenv.config()
 export default {
   port: process.env.PORT ?? 8080,
   selfUrl: String(process.env.SELF_URL) ?? 'http://localhost',
-  authUrl: String(process.env.AUTH_URL),
-  paypalUrl: String(process.env.PAYPAL_URL),
+  authUrl: 'https://api-m.sandbox.paypal.com/v1/oauth2/token',
+  paypalUrl: 'https://api-m.sandbox.paypal.com/v2/checkout/orders',
   clientId: String(process.env.CLIENT_ID),
-  clientSecret: String(process.env.CLIENT_SECRET)
+  clientSecret: String(process.env.CLIENT_SECRET),
+  redisHost: 'redis',
+  redisPort: 6379,
+  redisPassword: String(process.env.REDIS_PASSWORD)
 }
